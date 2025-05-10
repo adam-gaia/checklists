@@ -1,0 +1,22 @@
+[[fact]]
+type = "eval-command"
+key = "AUTHORS"
+command = "toml-path --raw-output .package.authors Cargo.toml | authors --names"
+# TODO: implicit requirements for commands would be nice
+requires = [{type = "command", command = "toml-path"}, {type = "command", command = "authors"}]
+
+[[fact]]
+type = "eval-command"
+key = "CURRENT_YEAR"
+command = "date +%Y"
+requires = [{type = "command", command = "date"}]
+
+[[check]]
+type = "file"
+path = "LICENSE-APACHE"
+template = "../templates/licenses/LICENSE-APACHE.j2"
+
+[[check]]
+type = "file"
+path = "LICENSE-MIT"
+template = "../templates/licenses/LICENSE-MIT.j2"

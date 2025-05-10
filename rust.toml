@@ -1,0 +1,26 @@
+[[fact]]
+type = "eval-command"
+key = "REPO_NAME"
+command = "toml-path --raw-output package.name Cargo.toml"
+require = {type = "command", command = "toml-path"}
+
+[[condition]]
+type = "file"
+path = "Cargo.toml"
+description = "Rust project defined by Cargo.toml"
+
+[[check]]
+type = "file"
+path = "Cargo.lock"
+description = "Cargo lockfile should exist"
+
+[[check]]
+type = "file"
+path = ".gitignore"
+contains = ["target/"]
+
+[[check]]
+type = "file"
+path = "README.md"
+template = "../templates/rust-README.md.j2"
+description = "Readme should follow standard format"

@@ -1,0 +1,8 @@
+[[condition]]
+type = "directory"
+path = ".git"
+description = "project is a git repo"
+
+[[check]]
+type = "file"
+path = ".gitignore"
